@@ -27,7 +27,6 @@ Description:
 import pyautogui
 import subprocess
 import time
-import sys
 
 BINGCHAT = "https://edgeservices.bing.com/edgesvc/chat"
 BINGCOMPOSE = "https://edgeservices.bing.com/edgesvc/compose"
