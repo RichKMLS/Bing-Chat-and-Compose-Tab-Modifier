@@ -20,6 +20,8 @@ to automate the process of
 - Running JavaScript in the Developer Console to modify the behavior of the tabs
 - Closing the Developer Console
 
+Optionally, you can just run the JS as a snippet in the dev console manually.
+
 Dedicated to the ~3 people on this planet who use edge dev browser in a virtual machine for the single purpose of accessing Bing AI.
 
 todo:
