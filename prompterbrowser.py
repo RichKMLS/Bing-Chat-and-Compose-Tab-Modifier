@@ -28,22 +28,13 @@ BINGCHAT = "https://edgeservices.bing.com/edgesvc/chat"
 BINGCOMPOSE = "https://edgeservices.bing.com/edgesvc/compose"
 WINDOWS_EDGE = r'C:\Program Files (x86)\Microsoft\Edge Dev\Application\msedge.exe'
 
-# Define an IIFE function that selects elements on a web page, sets the maxLength property of a search box to 25000,
-# and applies CSS rules to invert the colors of the page and set the background to black.
+# Define an IIFE function that sets the maxLength property of the search box to 25000.
 chat_js = """
 (function() {
     let root = document.querySelector("#b_sydConvCont > cib-serp")
         .shadowRoot;
     root.querySelector("#cib-action-bar-main").shadowRoot
         .querySelector("#searchbox").maxLength = "25000";
-    let css = `html { filter: invert(100%); background: black; }
-    img:not([src*=".svg"]), video { filter: invert(100%) }
-    :is([class*="button"], [id*="button"]) { filter: none; }`;
-    let head = document.getElementsByTagName('head')[0];
-    let style = document.createElement('style');
-    style.type = 'text/css';
-    style.appendChild(document.createTextNode(css));
-    head.appendChild(style);
 })();
 """
 
