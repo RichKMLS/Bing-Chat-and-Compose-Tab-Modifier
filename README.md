@@ -1,6 +1,12 @@
 # Prompter-Browser
 
-Dedicated to the ~3 people on this planet who use edge dev browser in a virtual machine for the single purpose of accessing Bing AI.
+Open Edge Dev Browser in a VM and convert to a standalone Bing-AI prompting wokshop.
+
+<p align="center">
+  <img src="https://github.com/RichKMLS/Prompter-Browser/assets/105183376/75f03296-7934-4fab-86f9-e263a01f43b4" width="40%"/>
+  <br>
+</p>
+
 
 Since user-scripts are seemingly blocked on edgeservices&period;bing&period;com/edgesvc/*, <br>
 Here is an overkill solution that uses image recognition
@@ -13,6 +19,8 @@ to automate the process of
 - Opening the Developer Console
 - Running JavaScript in the Developer Console to modify the behavior of the tabs
 - Closing the Developer Console
+
+Dedicated to the ~3 people on this planet who use edge dev browser in a virtual machine for the single purpose of accessing Bing AI.
 
 todo:
 - linux version using firejail
