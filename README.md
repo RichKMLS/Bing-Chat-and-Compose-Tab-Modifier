@@ -1,6 +1,6 @@
 # Prompter-Browser
 
-New!
+Dedicated to the ~3 people on this planet who use edge dev browser for the single purpose of accessing Bing AI.
 
 Since user-scripts are seemingly blocked on edgeservices&period;bing&period;com/edgesvc/*, <br>
 Here is an overkill solution that uses image recognition
@@ -19,6 +19,7 @@ todo:
 
 ## Features and Limitations
 
+- Please note that images are not included. If this script interests you, it is your responsibility to determine which images to use based on the context of the script. 😊
 - The script currently makes some assumptions about how Edge Dev Browser is set up such as using a Dark theme.
 
 ## Disclaimer
