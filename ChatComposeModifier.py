@@ -1,32 +1,28 @@
 """
-Title: ChatComposeModifier.py
+Title: Bing Chat and Compose Opener
 Author: github.com/richkmls
 Date: 19-5-2023
-Description: 
-
-    This script: 
-    - Automates the process of opening a Bing chat tab and a Compose tab in Edge Dev.
-    - Modifies the tabs to use different themes/layouts and changes some variables in console.
+Description: This script automates the process of opening a Bing chat tab and a Compose tab in Edge Dev.
 
     It first opens up the Bing Chat then Bing Compose in the Discover sidebar.
         This is required to be able to then open:
             - https://edgeservices.bing.com/edgesvc/chat
             - https://edgeservices.bing.com/edgesvc/compose
 
-    It then modifies the UI to provide a dark theme and a more user-friendly interface for more advanced prompting.
+    It then modifies the UI to provide a dark theme and a more user-friendly interface for advanced prompting.
+
     Pyautogui module is used to simulate mouse/keyboard actions and leverages the OpenCV library for image recognition.
+
     The `locateOnScreen()` function employs OpenCV to analyze the screen and locate specified images.
-    
+
     This script is designed to address the issue of user scripts being blocked on https://edgeservices.bing.com/*
         by automating the process of running Javascript in the Developer Console.
-    
-    This script is provided "as is" without any warranty. 
-    The author is not responsible for any damage or loss caused by using this script. 
 """
 
-import pyautogui
 import subprocess
+import sys
 import time
+import pyautogui as pag
 
 BINGCHAT = "https://edgeservices.bing.com/edgesvc/chat"
 BINGCOMPOSE = "https://edgeservices.bing.com/edgesvc/compose"
@@ -69,8 +65,8 @@ compose_js = """
 
 def exitConsole():
     """Exits the console by pressing F12 and waits for the 'inspect_element' image to disappear."""
-    pyautogui.press('f12')
-    while pyautogui.locateOnScreen('inspect_element.png', confidence=0.9):
+    pag.press('f12')
+    while pag.locateOnScreen('images/inspect_element.png', confidence=0.9):
         time.sleep(0.1)
     return
 
@@ -78,59 +74,57 @@ def writeJS(JS):
     """Writes JavaScript code into the console."""
 
     # Open the developer tools Console
-    pyautogui.hotkey('ctrl', 'shift', 'j')
+    pag.hotkey('ctrl', 'shift', 'j')
     # Wait for the Console
     console_area = None
     while not console_area:
-        console_area = pyautogui.locateOnScreen('console_area.png', confidence=0.9)
+        console_area = pag.locateOnScreen('images/console_area.png', confidence=0.9)
 
     # Click on the console area
-    pyautogui.click(console_area)
+    pag.click(console_area)
     time.sleep(0.1)
 
     # Write and run the JavaScript code in the console
-    pyautogui.write(JS)
+    pag.write(JS)
     time.sleep(0.1)
-    pyautogui.press('enter')
+    pag.press('enter')
 
 def navigate_to(URL):
     """Navigates to a specified URL."""
 
     time.sleep(0.1)
-
     # Wait for the omnibox (Address bar)
-    wait_for("omnibox", True)
-
+    wait_for('omnibox', True)
     time.sleep(0.1)
 
     # Navigate to URL
-    pyautogui.write(URL)
+    pag.write(URL)
 
     time.sleep(0.1)
-    pyautogui.press('enter')
+    pag.press('enter')
     time.sleep(0.1)
 
 def discover_sidebar(discover_button):
     """Discovers the sidebar by clicking on the 'discover_button'."""
 
-    chat_tab = pyautogui.locateOnScreen('chat_tab.png', confidence=0.9)
+    chat_tab = pag.locateOnScreen('images/chat_tab.png', confidence=0.9)
     if not chat_tab:
         # Open Discover sidebar
-        pyautogui.click(discover_button)
+        pag.click(discover_button)
     elif chat_tab:
         # Verify chat tab is open
-        pyautogui.click(chat_tab)
+        pag.click(chat_tab)
 
     # Wait for Bing Chat to fully load
-    wait_for("chat_buttons")
+    wait_for('chat_buttons')
 
     # Swap to compose tab in discover sidebar
-    pyautogui.click(pyautogui.locateOnScreen('ComposeButton.png', confidence=0.9))
+    pag.click(pag.locateOnScreen('images/compose_button.png', confidence=0.9))
 
-    wait_for("confirm_compose")
+    wait_for('confirm_compose')
 
     # Click the Discover sidebar button to close it.
-    pyautogui.click(discover_button)
+    pag.click(discover_button)
 
     # Wait to be fully closed
     while chat_tab:
@@ -139,19 +133,18 @@ def discover_sidebar(discover_button):
 def wait_for(element, clickElement=False):
     """Waits for an element to appear on screen and optionally clicks on it."""
 
-    located = {}
-    located[element] = None
+    located_element = None
 
-    while not located[element]:
-        located[element] = pyautogui.locateOnScreen(f'{element}.png', confidence=0.9)
-        if "omnibox" in element:
-            located[element] = pyautogui.locateOnScreen(f'{element}2.png', confidence=0.9)
+    while not located_element:
+        located_element = pag.locateOnScreen(f'images/{element}.png', confidence=0.9)
+        if 'omnibox' in element:
+            located_element = pag.locateOnScreen(f'images/{element}_alt.png', confidence=0.9)
         time.sleep(0.1)
 
     if clickElement == True:
-        pyautogui.click(located[element])
-    elif element == "discover_button":
-        discover_sidebar(located[element])
+        pag.click(located_element)
+    elif element == 'discover_button':
+        discover_sidebar(located_element)
     else:
         time.sleep(0.1)
 
@@ -162,7 +155,7 @@ def main():
     subprocess.Popen(WINDOWS_EDGE)
 
     # Wait for the Discover sidebar button
-    wait_for("discover_button")
+    wait_for('discover_button')
 
     # Navigate to Bing Chat
     navigate_to(BINGCHAT)
@@ -171,19 +164,19 @@ def main():
     writeJS(chat_js)
 
     # Wait for Bing Chat to convert to dark theme
-    wait_for("chat_start")
+    wait_for('chat_start')
 
     # Close console
     exitConsole()
 
     # Open a new tab
-    pyautogui.hotkey('ctrl', 't')
+    pag.hotkey('ctrl', 't')
 
     # Navigate to Bing Compose
     navigate_to(BINGCOMPOSE)
 
     # Wait for the page to load via long button visual
-    wait_for("long_button", True)
+    wait_for('long_button', True)
 
     # Write and run js on compose web page
     writeJS(compose_js)
@@ -195,11 +188,10 @@ def main():
     exitConsole()
 
     # Switch to the previous tab
-    pyautogui.hotkey('ctrl', 'shift', 'tab')
+    pag.hotkey('ctrl', 'shift', 'tab')
 
     # Wait for chat to be fully visible
     wait_for("chat_start")
-
 
 if __name__ == "__main__":
     main()
