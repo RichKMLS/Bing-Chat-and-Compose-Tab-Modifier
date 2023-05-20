@@ -25,6 +25,10 @@ Dedicated to the ~3 people on this planet who use edge dev browser in a virtual 
 todo:
 - linux version using firejail
 
+## The Advantages of Using a VM
+
+Using a VM is optional, but it has some benefits for running a full screen application. It allows you to customize the display window size according to your needs. Running in fullscreen removes any unwanted elements that might interfere with your focus or take up precious space on your screen. Additionally, it provides a layer of separation for those who prefer to use Bing AI without installing it on their host machine.
+
 ## Features and Limitations
 
 - Please note that images are not included. If this script interests you, it is your responsibility to determine which images to use based on the context of the script. 😊
