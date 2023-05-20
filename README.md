@@ -5,6 +5,8 @@ Open Edge Dev Browser in a VM and convert to a standalone Bing-AI prompting woks
 <p align="center">
   <img src="https://github.com/RichKMLS/Prompter-Browser/assets/105183376/75f03296-7934-4fab-86f9-e263a01f43b4" width="40%"/>
   <br>
+  (I added the 6th bulletpoint 😊)
+  <br>
 </p>
 
 
