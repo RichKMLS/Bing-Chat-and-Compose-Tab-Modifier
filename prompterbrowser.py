@@ -32,10 +32,15 @@ WINDOWS_EDGE = r'C:\Program Files (x86)\Microsoft\Edge Dev\Application\msedge.ex
 # and applies CSS rules to invert the colors of the page and set the background to black.
 chat_js = """
 (function() {
-    document.querySelector("#b_sydConvCont > cib-serp").shadowRoot.querySelector("#cib-action-bar-main").shadowRoot.querySelector("#searchbox").maxLength = "25000";
-    var css = 'html { filter: invert(100%); background: black; } img:not([src*=".svg"]), video { filter: invert(100%) } :is([class*="button"], [id*="button"]) { filter: none; }';
-    var head = document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
+    let root = document.querySelector("#b_sydConvCont > cib-serp")
+        .shadowRoot;
+    root.querySelector("#cib-action-bar-main").shadowRoot
+        .querySelector("#searchbox").maxLength = "25000";
+    let css = `html { filter: invert(100%); background: black; }
+    img:not([src*=".svg"]), video { filter: invert(100%) }
+    :is([class*="button"], [id*="button"]) { filter: none; }`;
+    let head = document.getElementsByTagName('head')[0];
+    let style = document.createElement('style');
     style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
     head.appendChild(style);
@@ -47,7 +52,8 @@ chat_js = """
 # and placeholder text of a text input element.
 compose_js = """
 (function() {
-    let decorations = ['.option-section', '#input_heading', '#preview_heading', '#insert_button', '#change_suggestions'];
+    let decorations = ['.option-section', '#input_heading',
+        '#preview_heading', '#insert_button', '#change_suggestions'];
     decorations.forEach((decoration) => {
         let elements = document.querySelectorAll(decoration);
         elements.forEach((element) => {
