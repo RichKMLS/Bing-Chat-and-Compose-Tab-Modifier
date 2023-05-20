@@ -38,4 +38,4 @@ Using a VM is optional, but it has some benefits for running a full screen appli
 
 ## Disclaimer
 
-This script is provided "as is" and with no warranty or guarantee of any kind, either express or implied, including but not limited to the accuracy, completeness, reliability, suitability, or availability of the script. I am not affiliated with or endorsed by Microsoft in any way and I do not assume any responsibility or liability for any consequences or damages that may arise from using this script. 
+These scripts are provided "as is" and with no warranty or guarantee of any kind, either express or implied, including but not limited to the accuracy, completeness, reliability, suitability, or availability of the script. I am not affiliated with or endorsed by Microsoft in any way and I do not assume any responsibility or liability for any consequences or damages that may arise from using these scripts. 
