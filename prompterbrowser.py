@@ -1,5 +1,5 @@
 """
-Title: Prompter-Broweser: Bing Chat and Compose Opener
+Title: Prompter-Browser: Bing Chat and Compose Opener
 Author: github.com/richkmls
 Date: 19-5-2023
 Description: This script automates the process of opening a Bing chat tab and a Compose tab in Edge Dev.
