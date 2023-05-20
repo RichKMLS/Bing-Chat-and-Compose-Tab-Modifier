@@ -33,8 +33,7 @@ WINDOWS_EDGE = r'C:\Program Files (x86)\Microsoft\Edge Dev\Application\msedge.ex
 chat_js = """
 (function() {
     document.querySelector("#b_sydConvCont > cib-serp").shadowRoot.querySelector("#cib-action-bar-main").shadowRoot.querySelector("#searchbox").maxLength = "25000";
-    var css = 'html { filter: invert(100%); background: black; } img:not([src*=".svg"]),
-        video { filter: invert(100%) } :is([class*="button"], [id*="button"]) { filter: none; }';
+    var css = 'html { filter: invert(100%); background: black; } img:not([src*=".svg"]), video { filter: invert(100%) } :is([class*="button"], [id*="button"]) { filter: none; }';
     var head = document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
     style.type = 'text/css';
@@ -48,7 +47,7 @@ chat_js = """
 # and placeholder text of a text input element.
 compose_js = """
 (function() {
-    let decorations = ['.option-section', '#input_heading', '#preview_heading', '#insert_button'];
+    let decorations = ['.option-section', '#input_heading', '#preview_heading', '#insert_button', '#change_suggestions'];
     decorations.forEach((decoration) => {
         let elements = document.querySelectorAll(decoration);
         elements.forEach((element) => {
@@ -187,11 +186,8 @@ def main():
     # Close console
     exitConsole()
 
-    # Switch to the previous tab
-    pag.hotkey('ctrl', 'shift', 'tab')
-
-    # Wait for chat to be fully visible
-    wait_for("chat_start")
+    # Switch to full screen
+    pag.hotkey('f11')
 
 if __name__ == "__main__":
     main()
