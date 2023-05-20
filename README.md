@@ -1,6 +1,6 @@
 # Prompter-Browser
 
-Dedicated to the ~3 people on this planet who use edge dev browser for the single purpose of accessing Bing AI.
+Dedicated to the ~3 people on this planet who use edge dev browser in a virtual machine for the single purpose of accessing Bing AI.
 
 Since user-scripts are seemingly blocked on edgeservices&period;bing&period;com/edgesvc/*, <br>
 Here is an overkill solution that uses image recognition
