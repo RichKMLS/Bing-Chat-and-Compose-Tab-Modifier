@@ -1,4 +1,4 @@
-# Bing-Chat-and-Compose-Tab-Modifier
+# Prompter-Browser
 
 New!
 
